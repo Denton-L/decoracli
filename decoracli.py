@@ -15,15 +15,21 @@ def main():
 
     args = parser.parse_args()
 
-    switch = decora.decora(args.address, bytes.fromhex(args.key))
-    switch.connect()
+    for _ in range(3):
+        try:
+            switch = decora.decora(args.address, bytes.fromhex(args.key))
+            switch.connect()
 
-    if args.on:
-        switch.on()
-    elif args.off:
-        switch.off()
-    else:
-        switch.set_brightness(args.dim)
+            if args.on:
+                switch.on()
+            elif args.off:
+                switch.off()
+            else:
+                switch.set_brightness(args.dim)
+
+            break
+        except:
+            pass
 
 if __name__ == '__main__':
     main()
