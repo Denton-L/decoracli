@@ -15,7 +15,7 @@ def main():
 
     args = parser.parse_args()
 
-    for _ in range(3):
+    for _ in range(25):
         try:
             switch = decora.decora(args.address, bytes.fromhex(args.key))
             switch.connect()
